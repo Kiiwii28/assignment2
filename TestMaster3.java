@@ -31,6 +31,7 @@ public class TestMaster3{
             filename = args[0]; //assume default file name
             System.out.println(filename + " was the name of the file requested");
             LSAVL lsAVL = new LSAVL(filename);
+            System.out.println("constructed and populated avl tree");
             Scanner createqueries = new Scanner(new File(filename)); //Creates queries from given textfile
             while (createqueries.hasNextLine())
             {

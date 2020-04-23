@@ -30,12 +30,12 @@ public class LSAVL{
     public void loadData() throws FileNotFoundException
     {
         Scanner fileInput = new Scanner(new File(fileName)); //reads in file from filename variable
-        while (fileInput.hasNextLine())
+        while (fileInput.hasNextLine()) //cycles through file using a scanner
         {
             String line =  fileInput.nextLine();
-            int firstspace = line.indexOf(" ");
+            int firstspace = line.indexOf(" "); //string handling to compare keys
             LSData lsd = new LSData(line.substring(0,firstspace),line.substring(firstspace)); //creates lsdatavaraiiables from each line in textfile
-            avl.insert(lsd); //as data is created, added it into lsAVL variable
+            avl.insert(lsd); //as LSdata object is created, added it into lsAVL variable
         }
     }
 
@@ -47,13 +47,14 @@ public class LSAVL{
      * @throws IOException
      */
     public void printAreas(String pquery) throws FileNotFoundException, IOException {
-        loadData();
+        loadData(); //populate the tree
+        System.out.println("Print areas called for search query");
         String query = pquery; //Make query into acceptable node
         LSData LSquery = new LSData(query,""); //AVL tree is child of binary tree
-        BinaryTreeNode<LSData> result = avl.find(LSquery); //search with data type, return into node
+        BinaryTreeNode<LSData> result = avl.find(LSquery); //search with LSdata type, return into node
         try {
-            if (result.data != null) {
-                System.out.println(result.data.toString() + "   result.."); //calls lsdata type's default toString
+            if (result.data != null) { //avoid null pointer exception
+                System.out.println("Result found: " + result.data.toString()); //calls lsdata type's default toString
                 System.out.println(avl.showResults()); //returns instrumentation
             }
         } catch (NullPointerException e) {

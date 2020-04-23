@@ -62,6 +62,7 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
    }
    public BinaryTreeNode<dataType> insert ( dataType d, BinaryTreeNode<dataType> node )
    {
+      insCount++;
       if (node == null)
          return new BinaryTreeNode<dataType> (d, null, null);
       if (d.compareTo (node.data) <= 0)
@@ -121,6 +122,7 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
    }
    public BinaryTreeNode<dataType> find ( dataType d, BinaryTreeNode<dataType> node )
    {
+      srchCount++;
       if (d.compareTo (node.data) == 0) 
          return node;
       else if (d.compareTo (node.data) < 0)

@@ -28,16 +28,16 @@ public class TestMaster2{
 
         if(args.length == 1){
             String filename;
-            filename = args[0]; //assume default file name
+            filename = args[0]; //set filename to first input line
             System.out.println(filename + " was the name of the file requested");
-            LSTree lsTree = new LSTree(args[0]);
-            Scanner createqueries = new Scanner(new File(filename));
+            LSTree lsTree = new LSTree(args[0]);//construct new tree and populate with specified file
+            Scanner createqueries = new Scanner(new File(filename)); //create a scanner to cycle through every line in textfile and search it against the populated data structure
             while (createqueries.hasNextLine())
             {
                 String line =  createqueries.nextLine();
                 int firstspace = line.indexOf(" ");
                 String query = line.substring(0,firstspace); //query is constructed
-               lsTree.printAreas(query);
+               lsTree.printAreas(query); //search tree with that line as a query
 
             }
 
